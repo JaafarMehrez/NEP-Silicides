@@ -1,0 +1,13 @@
+type          2 Si Ti
+version       4
+cutoff        8 4
+n_max         6 6
+basis_size    6 6
+l_max         4 1
+neuron        30
+lambda_e      1.0
+lambda_f      1.0
+lambda_v      0.1
+batch         1000
+population    50
+generation    200000
