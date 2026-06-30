@@ -1,0 +1,114 @@
+
+***************************************************************
+*                 Welcome to use GPUMD                        *
+*     (Graphics Processing Units Molecular Dynamics)          *
+*                     version 5.3                             *
+*              This is the gpumd executable                   *
+***************************************************************
+
+
+---------------------------------------------------------------
+Compiling options:
+---------------------------------------------------------------
+
+DEBUG is off: Use different PRNG seeds for different runs.
+
+---------------------------------------------------------------
+GPU information:
+---------------------------------------------------------------
+
+number of GPUs = 1
+Device id:                   0
+    Device name:             NVIDIA GeForce RTX 3090
+    Compute capability:      8.6
+    Amount of global memory: 23.6843 GB
+    Number of SMs:           82
+
+---------------------------------------------------------------
+Started running GPUMD.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started initializing positions and related parameters.
+---------------------------------------------------------------
+
+Number of atoms is 2.
+Use periodic boundary conditions along x.
+Use periodic boundary conditions along y.
+Use periodic boundary conditions along z.
+Box matrix h = [a, b, c] is
+    0.0000000000e+00    2.7170000000e+00    2.7170000000e+00
+    2.7170000000e+00    0.0000000000e+00    2.7170000000e+00
+    2.7170000000e+00    2.7170000000e+00    0.0000000000e+00
+Inverse box matrix g = inv(h) is
+   -1.8402649982e-01    1.8402649982e-01    1.8402649982e-01
+    1.8402649982e-01   -1.8402649982e-01    1.8402649982e-01
+    1.8402649982e-01    1.8402649982e-01   -1.8402649982e-01
+Do not specify initial velocities here.
+Have no grouping method.
+There is only one atom type.
+    2 atoms of type 0.
+Initialized velocities with default T = 300 K.
+
+---------------------------------------------------------------
+Finished initializing positions and related parameters.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started executing the commands in run.in.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Replicate cell by 8 * 8 * 8.
+Number of atoms is 1024.
+There is only one atom type.
+    1024 atoms of type 0.
+---------------------------------------------------------------
+
+Use the NEP4 potential with 1 atom type.
+    type 0 (Si with Z = 14).
+    has the universal ZBL with inner cutoff 1 A and outer cutoff 2 A.
+    radial cutoff = 6 A.
+    angular cutoff = 5 A.
+    MN_radial = 46.
+    enlarged MN_radial = 58.
+    enlarged MN_angular = 38.
+    n_max_radial = 4.
+    n_max_angular = 4.
+    basis_size_radial = 8.
+    basis_size_angular = 8.
+    l_max_3body = 4.
+    has_q_222 = 2.
+    has_q_1111 = 1.
+    has_q_112 = 0.
+    has_q_123 = 0.
+    has_q_233 = 0.
+    has_q_134 = 0.
+    ANN = 35-80-1.
+    number of neural network parameters = 2961.
+    number of descriptor parameters = 90.
+    total number of parameters = 3051.
+displacement for compute_phonon = 0.005 A.
+Using cutoff for phonon calculations: 12 A.
+Suggested replicate size for phonon calculations:
+Replicate in x >= 8.
+Replicate in y >= 8.
+Replicate in z >= 8.
+
+---------------------------------------------------------------
+Finished executing the commands in run.in.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Time used = 24.475636 s.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Finished running GPUMD.
+---------------------------------------------------------------
+

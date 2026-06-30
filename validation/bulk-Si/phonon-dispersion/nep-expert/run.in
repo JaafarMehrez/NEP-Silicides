@@ -1,0 +1,3 @@
+replicate 8 8 8
+potential       nep-expert.txt
+compute_phonon  0.005

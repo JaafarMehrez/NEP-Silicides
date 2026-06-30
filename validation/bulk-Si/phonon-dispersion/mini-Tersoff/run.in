@@ -1,0 +1,3 @@
+replicate 8 8 8
+potential       Si_Fan_2019.txt
+compute_phonon  0.005

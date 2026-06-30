@@ -1,0 +1,1 @@
+you can get the potential file from: https://github.com/brucefan1983/GPUMD/blob/master/potentials/nep/nep89_20250409/nep89_20250409.txt
