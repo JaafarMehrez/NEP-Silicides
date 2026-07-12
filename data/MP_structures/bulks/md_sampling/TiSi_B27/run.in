@@ -1,0 +1,11 @@
+replicate 5 4 3
+potential nep.txt
+
+velocity 300
+ensemble npt_ber 300 300 100 0 0 0 200 200 200 1000
+
+time_step 0.5
+dump_thermo 100
+dump_position 2000
+
+run 3000000
