@@ -1,0 +1,3 @@
+replicate 8 8 8
+potential       nep_y2026_m06_d23_h09_m06_s19_generation200000.txt
+compute_phonon  0.005
