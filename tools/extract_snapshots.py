@@ -10,9 +10,9 @@ Date:   July 2026
 import os
 import numpy as np
 
-base = "/path/to/md_sampling"
+base = "/path/to/MD_NPT"
 structures = ["C54_TiSi2", "C49_TiSi2", "TiSi_B27", "Ti5Si3"]
-n_skip = 100 
+n_skip = 100
 n_target = 50
 
 
@@ -43,21 +43,24 @@ def write_poscar(frame, out_dir, name):
     os.makedirs(out_dir, exist_ok=True)
     lat = frame["lattice"]
     atoms = frame["atoms"]
-    
+
     symbols = []
     for s, _ in atoms:
         if s not in symbols:
             symbols.append(s)
     symbols.sort(key=lambda x: (x != "Ti", x))
     counts = [sum(1 for s, _ in atoms if s == sym) for sym in symbols]
-    
+
     lat_inv = np.linalg.inv(lat)
+    atoms_sorted = []
+    for sym in symbols:
+        atoms_sorted.extend([(s, p) for s, p in atoms if s == sym])
     frac_pos = []
-    for _, pos in atoms:
+    for _, pos in atoms_sorted:
         frac = lat_inv @ pos
         frac = frac - np.floor(frac)
         frac_pos.append(frac)
-        
+
     path = os.path.join(out_dir, name)
     with open(path, "w") as f:
         f.write(f"{name} (NEP-MD snapshot)\n")
@@ -69,7 +72,8 @@ def write_poscar(frame, out_dir, name):
         f.write("Direct\n")
         for frac in frac_pos:
             f.write(f"  {frac[0]:.15f}  {frac[1]:.15f}  {frac[2]:.15f}\n")
-            
+
+
 for struct in structures:
     movie_path = os.path.join(base, struct, "movie.xyz")
     print(f"{struct}: reading {movie_path}")
@@ -82,9 +86,9 @@ for struct in structures:
         n = available
     else:
         n = n_target
-        
+
     indices = np.linspace(n_skip, len(frames) - 1, n, dtype=int)
-    
+
     snap_dir = os.path.join(base, struct, "snapshots")
     for i, idx in enumerate(indices):
         subdir = os.path.join(snap_dir, f"snapshot_{i + 1:04d}")
@@ -93,7 +97,7 @@ for struct in structures:
         print(
             f"  snapshot {i + 1:3d}/{n}: frame {idx:4d} (t={t_ps:.3f} ns) -> {subdir}/POSCAR"
         )
-        
+
     script_path = os.path.join(snap_dir, "convert_all.sh")
     with open(script_path, "w") as f:
         f.write("#!/bin/bash\n")
@@ -105,5 +109,5 @@ for struct in structures:
         f.write("    fi\n")
         f.write("done\n")
     os.chmod(script_path, 0o755)
-    
+
 print("\nDone. Snapshot directories and POSCAR files created.")
